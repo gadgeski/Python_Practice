@@ -8,9 +8,9 @@ def check_hit_and_blow(secret, guess):
     blow = 0
 
     # ヒットのカウント（ヒット　　= 数値と位置が一致）
-    for i in range(1en(secret)):
-        if secret[1] == guess[1]
-            hit == 1
+    for i in range(len(secret)):
+        if secret[i] == guess[i]:
+            hit += 1
 
     # 重複数のカウント
     hit_and_blow = 0
@@ -32,7 +32,6 @@ print('あなたは1ケタから9ケタのケタ数を指定してください�
 while True:
     n = int(input('何ケタの数字にしますか？(1~9):'))
 
-
     # 1~9の入力がされた際、ループから抜ける
     if 1 <= n <= 9:
         break
@@ -40,16 +39,16 @@ while True:
 
 # 正解の数値
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-secret_numbers = random.sample(numbers, 0)
+secret_numbers = random.sample(numbers, n)
 
 # 試行回数を初期化
 trial_count = 0
 
 # ユーザーから推測した数字を受け取り正解するまでループ
 while True:
-    guess_number = input(f'{n}ケタの数字を入れてください')
+    guess_number = input(f'{n}ケタの数字を入れてください: ')
 
-    # 入力を正数リストに変換
+    # 入力を整数リストに変換
     guess_list = []
     for char in guess_number:
         guess_list.append(int(char))
@@ -60,12 +59,12 @@ while True:
     print(f'{trial_count}回目の回答です。')
 
     # ユーザーの推測値と正解を比較、ヒットとブローの数値を返す
-    hit, blow = check_hit_blow(secret_number, guess_list)
+    hit, blow = check_hit_and_blow(secret_numbers, guess_list)
     
     # 結果表示
-    if hit == n;
-        print(f'正解!GameClear!正解=[secret_numbers]')
-        print(f'[trial_count]回で正解でした。')
+    if hit == n:
+        print(f'正解!GameClear!正解={secret_numbers}')
+        print(f'{trial_count}回で正解でした。')
         break
     else:
-    print(f'ヒット = (hit), ブロー = (blow)')
+        print(f'ヒット = {hit}, ブロー = {blow}')
